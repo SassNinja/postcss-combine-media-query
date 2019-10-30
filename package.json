@@ -5,7 +5,9 @@
   "author": "Kai Falkowski",
   "license": "MIT",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "jest"
+  },
   "keywords": [
     "postcss",
     "plugin",
@@ -16,10 +18,12 @@
     "combine",
     "optimization"
   ],
-  "peerDependencies": {
+  "dependencies": {
     "postcss": "^7.0.21"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/SassNinja/postcss-combine-media-query.git"

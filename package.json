@@ -1,0 +1,27 @@
+{
+  "name": "postcss-combine-media-query",
+  "version": "1.0.0",
+  "description": "PostCSS plugin to combine equal media query rules.",
+  "author": "Kai Falkowski",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "postcss",
+    "plugin",
+    "postcss-plugin",
+    "css",
+    "mediaquery",
+    "mq",
+    "combine",
+    "optimization"
+  ],
+  "peerDependencies": {
+    "postcss": "^7.0.21"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SassNinja/postcss-combine-media-query.git"
+  }
+}

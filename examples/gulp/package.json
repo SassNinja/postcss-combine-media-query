@@ -1,0 +1,20 @@
+{
+  "name": "gulp-example",
+  "version": "1.0.0",
+  "description": "Complete example for gulp.",
+  "author": "Kai Falkowski",
+  "license": "MIT",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp",
+    "start-watch": "gulp --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-delete-file": "^1.0.2",
+    "gulp-postcss": "^8.0.0",
+    "postcss-combine-media-query": "^1.0.0",
+    "yargs": "^14.2.0"
+  }
+}

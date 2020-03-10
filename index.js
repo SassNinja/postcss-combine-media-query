@@ -3,7 +3,7 @@ const postcss = require('postcss');
 
 module.exports = postcss.plugin('postcss-combine-media-query', opts => {
 
-    var atRules = {};
+    let atRules = {};
 
     function addToAtRules(atRule) {
         const key = atRule.params;

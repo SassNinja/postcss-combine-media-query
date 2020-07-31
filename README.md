@@ -44,9 +44,37 @@ yarn add postcss-combine-media-query --dev
 ## Usage
 
 Simply add the plugin to your PostCSS config.
-That's all – easy as pie :wink: (there are no options)
+That's all – easy as pie :wink:
 
 If you're not familiar with using PostCSS you should read the official [PostCSS documentation](https://github.com/postcss/postcss#usage) first.
+
+### Options
+
+You can set a flag to optimise logical min-widths automatically.
+
+Example:
+```CSS
+/* does not make any logical sense */
+@media (min-width: 480px) and (min-width: 768px) {
+    body {
+        color: #fff;
+    }
+}
+
+/* when processed with `optimiseMinWidth` flag */
+@media (min-width: 768px) {
+    body {
+        color: #fff;
+    }
+}
+```
+To do so set the flag `optimiseMinWidth` to `true`.
+
+```JS
+postcssCombineMediaQuery({
+    optimiseMinWidth: true
+})
+```
 
 ## Side Effects
 

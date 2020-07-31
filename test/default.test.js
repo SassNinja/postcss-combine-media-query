@@ -6,7 +6,9 @@ const data = require('./default.data');
 let root;
 
 beforeAll(() => {
-    root = postcss([plugin()]).process(data).root;
+    root = postcss([plugin({
+        optimiseQueries: true
+    })]).process(data).root;
 });
 
 test('should combine equal media rules', () => {
@@ -15,7 +17,7 @@ test('should combine equal media rules', () => {
     root.walkAtRules('media', rule => {
         count++;
     });
-    expect(count).toBe(3);
+    expect(count).toBe(6);
 });
 
 test('should move all media rules to the end', () => {
@@ -31,4 +33,19 @@ test('should move all media rules to the end', () => {
         }
         expect(endsWithMedia).toBe(true);
     });
+});
+
+test('should optimise logical-and concated min-width declarations', () => {
+    let processedRuleParams = [
+        //  @media (min-width: 480px) and (min-width: 768px)
+        '(min-width: 768px)',
+        // @media screen and (min-width: 480px) and screen and (min-width: 768px)
+        'screen and (min-width: 768px)',
+        // @media (min-width: 480px) and (min-width: 768px), screen and (min-width: 1024px), screen and (min-width: 480px) and screen and (min-width: 768px)
+        '(min-width: 768px), screen and (min-width: 1024px), screen and (min-width: 768px)'
+    ]
+    root.walkAtRules('media', rule => {
+        processedRuleParams = processedRuleParams.filter(ruleParam => ruleParam !== rule.params);
+    });
+    expect(processedRuleParams).toStrictEqual([]);
 });

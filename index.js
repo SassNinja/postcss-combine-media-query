@@ -1,7 +1,7 @@
 
 const postcss = require('postcss');
 
-module.exports = postcss.plugin('postcss-combine-media-query', opts => {
+module.exports = (opts = {}) => {
 
     let atRules = {};
 
@@ -18,8 +18,7 @@ module.exports = postcss.plugin('postcss-combine-media-query', opts => {
         atRule.remove();
     }
 
-    return root => {
-
+    const combineMediaQuery = root => {
         root.walkAtRules('media', atRule => {
             addToAtRules(atRule);
         });
@@ -30,4 +29,11 @@ module.exports = postcss.plugin('postcss-combine-media-query', opts => {
 
         atRules = {};
     };
-});
+
+    return {
+      postcssPlugin: 'postcss-combine-media-query',
+      Once: combineMediaQuery
+    };
+};
+
+module.exports.postcss = true;

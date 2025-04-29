@@ -1,11 +1,17 @@
 {
   "name": "postcss-combine-media-query",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "PostCSS plugin to combine equal media query rules.",
-  "author": "Kai Falkowski",
+  "author": "Kai Tran",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
     "test": "jest"
   },
   "keywords": [
@@ -18,11 +24,17 @@
     "combine",
     "optimization"
   ],
-  "dependencies": {
-    "postcss": "^7.0.21"
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "peerDependencies": {
+    "postcss": "^8.0.0"
   },
   "devDependencies": {
-    "jest": "^24.9.0"
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.2",
+    "typescript": "^5.8.3"
   },
   "repository": {
     "type": "git",

@@ -1,7 +1,5 @@
 # postcss-combine-media-query
 
-[![Build Status](https://travis-ci.com/SassNinja/postcss-combine-media-query.svg?branch=master)](https://travis-ci.com/SassNinja/postcss-combine-media-query)
-
 If you are used to write the media queries of your components within those components (what you should do instead of maintaining a large global media query file) you might end up with CSS that contains the same media query rule multiple times.
 
 ```css

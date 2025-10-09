@@ -1,6 +1,6 @@
 {
   "name": "gulp-example",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Complete example for gulp.",
   "author": "Kai Tran",
   "license": "MIT",
@@ -13,6 +13,6 @@
     "del": "^6.1.1",
     "gulp": "^5.0.0",
     "gulp-postcss": "^10.0.0",
-    "postcss-combine-media-query": "^2.0.0"
+    "postcss-combine-media-query": "^2.1.0"
   }
 }

@@ -1,19 +1,30 @@
 
-import postcss, { Root, AtRule } from 'postcss';
+import postcss, { Root, AtRule, ChildNode } from 'postcss';
 
 const plugin = (opts = {}) => {
 
     let atRules: Record<string, AtRule> = {};
 
-    function addToAtRules(atRule: AtRule) {
-        const key = atRule.params;
+    function addToAtRules(atRule: AtRule, parentParams?: string) {
+        const key = parentParams ? `${parentParams} and ${atRule.params}` : atRule.params;
+        const childNodes: ChildNode[] = [];
 
-        if (!atRules[key]) {
-            atRules[key] = postcss.atRule({ name: atRule.name, params: atRule.params });
-        }
         atRule.nodes?.forEach((node) => {
-            atRules[key].append(node.clone());
+            if (node.type === 'atrule' && node.name === 'media') {
+                addToAtRules(node, key);
+            } else {
+                childNodes.push(node);
+            }
         });
+
+        if (childNodes.length) {
+            if (!atRules[key]) {
+                atRules[key] = postcss.atRule({ name: atRule.name, params: key });
+            }
+            childNodes.forEach((node) => {
+                atRules[key].append(node.clone());
+            });
+        }
 
         atRule.remove();
     }

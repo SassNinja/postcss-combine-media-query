@@ -1,6 +1,6 @@
 {
   "name": "postcss-combine-media-query",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "PostCSS plugin to combine equal media query rules.",
   "author": "Kai Tran",
   "license": "MIT",
@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "build": "tsc",
+    "build:watch": "tsc --watch",
     "prepare": "npm run build",
     "test": "jest"
   },
